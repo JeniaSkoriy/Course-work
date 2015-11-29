@@ -3,22 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package view;
 
-package maincourse;
+import model.Equipment;
 
 /**
  *
  * @author ImmolateImprove
  */
-public class MainCourse {
+public class Driver {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("hello world");
-        System.out.println("course work");
-        System.out.println("gg wp");
+        Equipment s = new Equipment(100, 50, "white");
     }
-    
+
 }
