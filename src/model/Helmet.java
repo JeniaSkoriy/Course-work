@@ -9,12 +9,12 @@ package model;
  *
  * @author ImmolateImprove
  */
-public class Helmet extends Equipment {
+public class Helmet {
 
     private String glassStyle;
 
-    public Helmet(double price, double weight, String color, String glassStyle) {
-        super(price, weight, color);
+    public Helmet(String glassStyle) {
+
         this.glassStyle = glassStyle;
     }
 

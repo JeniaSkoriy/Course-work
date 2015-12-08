@@ -9,12 +9,12 @@ package model;
  *
  * @author ImmolateImprove
  */
-public class Jacket extends Equipment {
+public class Jacket {
 
     private int pockedCount;
 
-    public Jacket(double price, double weight, String color, int pockedCount) {
-        super(price, weight, color);
+    public Jacket(int pockedCount) {
+
         this.pockedCount = pockedCount;
     }
 

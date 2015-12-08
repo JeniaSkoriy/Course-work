@@ -9,17 +9,21 @@ package model;
  *
  * @author ImmolateImprove
  */
-public abstract class Equipment {
+public class Equipment extends Men {
 
     private double price;
     private double weight;
-    private String color;
+    private String name;
+    private Jacket pockedCount;
+    private Helmet glassStyle;
 
-    public Equipment(double price, double weight, String color) {
+    public Equipment(double price, double weight, String name, String NameMoto) {
+        super(NameMoto);
         this.price = price;
         this.weight = weight;
-        this.color = color;
+        this.name = name;
     }
+    
 
     public double getPrice() {
         return price;
@@ -37,12 +41,28 @@ public abstract class Equipment {
         this.weight = weight;
     }
 
-    public String getColor() {
-        return color;
+    public String getName() {
+        return name;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Jacket getPockedCount() {
+        return pockedCount;
+    }
+
+    public void setPockedCount(Jacket pockedCount) {
+        this.pockedCount = pockedCount;
+    }
+
+    public Helmet getGlassStyle() {
+        return glassStyle;
+    }
+
+    public void setGlassStyle(Helmet glassStyle) {
+        this.glassStyle = glassStyle;
     }
 
 }
