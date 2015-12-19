@@ -9,16 +9,15 @@ package model;
  *
  * @author ImmolateImprove
  */
-public class Equipment extends Men {
+public class Equipment {
 
     private double price;
     private double weight;
     private String name;
-    private Jacket pockedCount;
-    private Helmet glassStyle;
+    
 
-    public Equipment(double price, double weight, String name, String NameMoto) {
-        super(NameMoto);
+    public Equipment(double price, double weight, String name) {
+        
         this.price = price;
         this.weight = weight;
         this.name = name;
@@ -49,20 +48,11 @@ public class Equipment extends Men {
         this.name = name;
     }
 
-    public Jacket getPockedCount() {
-        return pockedCount;
+    @Override
+    public String toString() {
+        return "Equipment{" + "price=" + price + ", weight=" + weight + ", name=" + name + '}';
     }
+    
 
-    public void setPockedCount(Jacket pockedCount) {
-        this.pockedCount = pockedCount;
-    }
-
-    public Helmet getGlassStyle() {
-        return glassStyle;
-    }
-
-    public void setGlassStyle(Helmet glassStyle) {
-        this.glassStyle = glassStyle;
-    }
 
 }

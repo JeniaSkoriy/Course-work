@@ -8,106 +8,108 @@ package view;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 import logic.SortAndFind;
-import static logic.SortAndFind.calculateTotalPrice;
 import static logic.SortAndFind.findEquipment;
+import model.Boots;
 import model.Equipment;
 import model.Helmet;
 import model.Jacket;
 import model.Men;
+import model.Pants;
 
 /**
  *
  * @author ImmolateImprove
  */
-public class Driver {
+
+
+public class Driver  {
 
     /**
      * @param args the command line arguments
      */
-    static ArrayList<Equipment> equipmentList = new ArrayList<>();
-    static ArrayList<Men> menList = new ArrayList<>();
-    static ArrayList<Equipment> helmets = new ArrayList<>();
-    static ArrayList<Equipment> jackets = new ArrayList<>();
-
+   
+    
     public static void main(String[] args) {
         Men jacky = new Men("Jacky");
-        menList.add(jacky);
-        Men stas = new Men("Stas");
-        menList.add(stas);
-        Men lol = new Men("Lol");
-        menList.add(lol);
-
-        Equipment varHelmet = new Equipment(10, 44, "varHelmet", "Jacky");
-        equipmentList.add(varHelmet);
-        Equipment coldHelmet = new Equipment(115, 47, "coldHelmet", "Stas");
-        equipmentList.add(coldHelmet);
-        Equipment fireHelmet = new Equipment(110, 40, "fireHelmet", "Lol");
-        equipmentList.add(fireHelmet);
-
-        Equipment varJacket = new Equipment(1100, 100, "varJacket", "Jacky");
-        equipmentList.add(varJacket);
-        Equipment coldJacket = new Equipment(499, 0.5, "coldJacket", "Stas");
-        equipmentList.add(coldJacket);
-        Equipment fireJacket = new Equipment(228, 50, "fireJacket", "Lol");
-        equipmentList.add(fireJacket);
-
-        System.out.println("Список людей");
-        for (Men el : menList) {
-            System.out.println(el.getNameMoto() + "   ");
-        }
-
-        System.out.println("");
-
-        Equipment vHelmet = new Equipment(10, 44, "varHelmet", "Jacky");
-        Helmet jacky1 = new Helmet("black");
-        vHelmet.setGlassStyle(jacky1);
-        helmets.add(vHelmet);
-
-        Equipment cHelmet = new Equipment(115, 47, "coldHelmet", "Stas");
-        Helmet jacky2 = new Helmet("white");
-        cHelmet.setGlassStyle(jacky2);
-        helmets.add(cHelmet);
-
-        Equipment fHelmet = new Equipment(110, 40, "fireHelmet", "Lol");
-        Helmet jacky3 = new Helmet("blue");
-        fHelmet.setGlassStyle(jacky3);
-        helmets.add(fHelmet);
-
-        Equipment vJacket = new Equipment(1100, 100, "varJacket", "Jacky");
-        Jacket jacky4 = new Jacket(2);
-        vJacket.setPockedCount(jacky4);
-        jackets.add(vJacket);
-
-        Equipment cJacket = new Equipment(499, 0.5, "coldJacket", "Stas");
-        Jacket jacky5 = new Jacket(4);
-        cJacket.setPockedCount(jacky5);
-        jackets.add(cJacket);
-
-        Equipment fJacket = new Equipment(228, 50, "fireJacket", "Lol");
-        Jacket jacky6 = new Jacket(6);
-        fJacket.setPockedCount(jacky6);
-        jackets.add(fJacket);
-
-        System.out.println("Набір шоломів");
-        for (Equipment el : helmets) {
-            System.out.println(el.getName() + "   ");
-        }
-        for (int i = 0; i < equipmentList.size(); i++) {
-            System.out.println("імя=  " + equipmentList.get(i).getName() + "  ціна=  " + equipmentList.get(i).getPrice() + "  Розмір=  " + equipmentList.get(i).getWeight());
-        }
-        System.out.println("");
-        System.out.println("Підходящє спорядження по ціні");
-        System.out.println(Arrays.toString(findEquipment(100, 500, equipmentList)));
-
-        System.out.println("Cписок спорядження відсортованого за ціною");
-        SortAndFind.sortWidth(equipmentList);
-        for (Equipment el : equipmentList) {
-            System.out.println(el.getName());
-        }
+        initMen(jacky);
+        System.out.println("All Equipment");
+        printEquipmentList(jacky.getAllEquipment());
+        System.out.println(jacky.calculateTotalPrice());
+        List<Equipment> list = SortAndFind.findEquipment(150, 1000, jacky.getAllEquipment());
+        printEquipmentList(list);
+       
         
-        System.out.println("Загальна ціна=  "+calculateTotalPrice(equipmentList));
+    }
+
+    public static void initMen(Men men) {
+        men.addEquipment(createEquipmentList());
 
     }
 
+    public static void printEquipmentList(List<Equipment> list) {
+        for (Equipment item : list) {
+            System.out.println(item);
+        }
+    }
+
+    public static List<Equipment> createEquipmentList() {
+        Equipment goodHelmet = new Helmet("blue", 999, 63, "Good helmet");
+        Equipment lightHelmet = new Helmet("white-white", 0, 1, "Light helmet");
+        Equipment goodJacket = new Jacket(0, 1000, 63, "Good jacket");
+        Equipment lightJacket = new Jacket(999, 0, 1, "Light Jacket");
+        Equipment goodPants = new Pants("leggings", 321, 63, "Good pants");
+        Equipment lightPants = new Pants("sport", 0, 1, "Light Pants");
+        Equipment goodBoot = new Boots("Mongol", 123, 63, "Good boot");
+        Equipment lightBoot = new Boots("Spain", 0, 1, "Light Boot");
+
+        Equipment fHelmet = new Helmet("orange", 25.25, 20, "Flowers Helmet");
+        Equipment fearHelmet = new Helmet("red", 850, 20, "FEAR helmet");
+        Equipment fJacket = new Jacket(2, 52.52, 20, "Flowers Jacket");
+        Equipment fearJacket = new Jacket(4, 850, 20, "FEAR jacket");
+        Equipment fPants = new Pants("Home", 25.52, 20, "Flowers Pants");
+        Equipment fearPants = new Pants("fear home", 52.25, 20, "FEAR Pants");
+        Equipment fBoot = new Boots("Home", 2.5, 20, "Flowers Boots");
+        Equipment fearBoots = new Boots("fear home", 5.2, 20, "FEAR Boots");
+
+        Equipment varHelmet = new Helmet("black", 100, 40, "Var helmet");
+        Equipment cHelmet = new Helmet("white", 105, 36, "Cold helmet");
+        Equipment varJacket = new Jacket(4, 500, 40, "Var Jacket");
+        Equipment cJacket = new Jacket(2, 400, 36, "Cold Jacket");
+        Equipment varPants = new Pants("jeans", 200, 40, "Var jeans");
+        Equipment cPants = new Pants("Sport", 400, 36, "Cold Sport");
+        Equipment varBoot = new Boots("Japan", 1500, 40, "Var boots");
+        Equipment cBoot = new Boots("Ukraine", 1000, 36, "Cold boots");
+        List<Equipment> list = new ArrayList();
+        list.add(goodHelmet);
+        list.add(lightHelmet);
+        list.add(goodJacket);
+        list.add(lightJacket);
+        list.add(goodPants);
+        list.add(lightPants);
+        list.add(goodBoot);
+        list.add(lightBoot); 
+
+        list.add(fHelmet);
+        list.add(fearHelmet);
+        list.add(fJacket);
+        list.add(fearJacket);
+        list.add(fPants);
+        list.add(fearPants);
+        list.add(fBoot);
+        list.add(fearBoots);
+
+        list.add(cHelmet);
+        list.add(varHelmet);
+        list.add(cJacket);
+        list.add(varJacket);
+        list.add(varPants);
+        list.add(cPants);
+        list.add(varBoot);
+        list.add(cBoot);
+        Random r = new Random();
+        return list.subList(0, 10);
+    }
 }

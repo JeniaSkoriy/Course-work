@@ -15,27 +15,43 @@ import java.util.List;
 public class Men {
 
     private List<Equipment> list;
-    private String NameMoto;
+    private String nameMoto;
 
-    public Men(String NameMoto) {
-        this.NameMoto = NameMoto;
+    public Men(String nameMoto) {
+        this.nameMoto = nameMoto;
         list = new ArrayList();
     }
 
     public String getNameMoto() {
-        return NameMoto;
+        return nameMoto;
     }
 
-    public void setNameMoto(String NameMoto) {
-        this.NameMoto = NameMoto;
+    public void setNameMoto(String nameMoto) {
+        this.nameMoto = nameMoto;
     }
 
     public void addEquipment(Equipment item) {
         list.add(item);
     }
 
-    public void removeEquipment(Equipment item) {
-        list.remove(item);
+    public void removeEquipment(int index) {
+        list.remove(index);
+    }
+
+    public double calculateTotalPrice() {
+        double totalPrice = 0;
+        for (Equipment spec : list) {
+            totalPrice += spec.getPrice();
+        }
+        return totalPrice;
+    }
+
+    public void addEquipment(List<Equipment> list) {
+        this.list.addAll(list);
+    }
+
+    public List<Equipment> getAllEquipment() {
+        return new ArrayList(list);
     }
 
 }

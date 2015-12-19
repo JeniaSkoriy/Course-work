@@ -9,12 +9,12 @@ package model;
  *
  * @author ImmolateImprove
  */
-public class Jacket {
+public class Jacket extends Equipment{
 
     private int pockedCount;
 
-    public Jacket(int pockedCount) {
-
+    public Jacket(int pockedCount, double price, double weight, String name) {
+        super(price, weight, name);
         this.pockedCount = pockedCount;
     }
 
@@ -25,5 +25,9 @@ public class Jacket {
     public void setPockedCount(int pockedCount) {
         this.pockedCount = pockedCount;
     }
+
+    
+
+    
 
 }
